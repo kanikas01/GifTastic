@@ -2,8 +2,12 @@ main {
   box-sizing: border-box;
 }
 
+#topic-form {
+  float: right;
+}
 #topics {
-  width: 75%;
+  float: left;
+  width: 70%;
   display: flex;
   flex-wrap: wrap;
 }
