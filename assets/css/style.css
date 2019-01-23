@@ -1,0 +1,9 @@
+main {
+  box-sizing: border-box;
+}
+
+#topics {
+  width: 75%;
+  display: flex;
+  flex-wrap: wrap;
+}
