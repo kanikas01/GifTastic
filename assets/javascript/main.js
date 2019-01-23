@@ -37,7 +37,9 @@ $(document).ready(function () {
   $('#add-topic').on('click', function(event) {
     event.preventDefault();
     var newTopic = $("#topic-input").val();
-    addButton(newTopic);
+    topics.push(newTopic);
+    $topicButtonsDiv.empty();
+    topics.forEach(addButton);
     $("#topic-input").val("");
   });
 
@@ -67,7 +69,7 @@ $(document).ready(function () {
           $newGif.attr('data-state', 'still');
 
           // Construct div containing image and rating
-          $newDiv = $("<div>");
+          $newDiv = $('<div class="giphy-element">');
           $newH2 = $("<h2>");
           $newH2.text(rating);
           $newDiv.append($newGif);
