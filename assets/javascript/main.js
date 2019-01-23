@@ -70,10 +70,10 @@ $(document).ready(function () {
 
           // Construct div containing image and rating
           $newDiv = $('<div class="giphy-element">');
-          $newH2 = $("<h2>");
-          $newH2.text(rating);
+          $newH3 = $("<h3>");
+          $newH3.text(rating);
           $newDiv.append($newGif);
-          $newDiv.append($newH2);
+          $newDiv.append($newH3);
 
           // Add new div to page
           $topicsDiv.prepend($newDiv);
