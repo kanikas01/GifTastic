@@ -3,42 +3,55 @@ $(document).ready(function () {
 
   // ---------- Global variables ---------- //
 
-  var $foodButtonsDiv = $("#food-buttons");
-  var $foodFormDiv = $("#food-form");
-  var $foodsDiv = $("#foods");
+  var $topicButtonsDiv = $("#topic-buttons");
+  var $topicFormDiv = $("#topic-form");
+  var $topicsDiv = $("#topics");
+  var giphyURL = "http://api.giphy.com/v1/gifs/search?q=";
+  var apiKey = "api_key=D39qfZFwvT1y8rgUTRAWeqRm5du5pQ2q";
+  var limit = "limit=10";
 
-  // Create array of foods
-  var foods = ["cow"];
+  // Create array of topics
+  var topics = [
+    "beans",
+    "burgers",
+    "catfish",
+    "cheese",
+    "dumplings",
+    "mushrooms",
+    "oranges",
+    "oysters",
+    "popcorn",
+    "salad",
+    "sausage",
+    "shrimp",
+    "tacos",
+    "tofu"
+  ];
 
-  //  For food in food array
-  //    add food button to page 
-  
-  foods.forEach(addButton);
+  // Add a button to the page for each topic
+  topics.forEach(addButton);
 
 
   // ---------- Click handlers ---------- //
 
-  // button - add button to page
-  $('#add-food').on('click', function(event) {
+  // Add user's new topic button to page
+  $('#add-topic').on('click', function(event) {
     event.preventDefault();
-    var newFood = $("#food-input").val();
-    addButton(newFood);
-    $("#food-input").val("");
+    var newTopic = $("#topic-input").val();
+    addButton(newTopic);
+    $("#topic-input").val("");
   });
 
-  // gif button - get gifs and add to page
-  $('#food-button').on('click', function(event) {
-    var queryTopic = tomato; // define me 
-    var queryURL = "https://api.giphy.com/v1/gifs/random?api_key=D39qfZFwvT1y8rgUTRAWeqRm5du5pQ2q&tag=" + queryTopic;
+  // Get gifs and add to page
+  $topicButtonsDiv.on('click', 'button', function(event) {
+    var queryTopic = $(this).val();
+    var queryURL = giphyURL + queryTopic + "&" + apiKey + "&" + limit;
 
-    // Perfoming an AJAX GET request to our queryURL
+    // Ajax request
     $.ajax({
       url: queryURL,
       method: "GET"
-    })
-
-      // After the data from the AJAX request comes back
-      .then(function (response) {
+    }).then(function (response) {
         console.log(response);
 
 
@@ -58,7 +71,7 @@ $(document).ready(function () {
   });
 
   // image - click to start or stop animation
-  $foodsDiv.on('click', '.gif', function () {
+  $topicsDiv.on('click', '.gif', function () {
     var state = $(this).attr("data-state");
     // If you click on still image it animates
     // If you click on animated image, it stops
@@ -75,18 +88,11 @@ $(document).ready(function () {
   // ---------- Additional functions ---------- //
 
   // Add new button to page
-  function addButton(food) {
-    console.log(food);
-  }
-
-  // Display new food gifs on page with rating above each gif
-  function addGifs() {
-    clear();
-    // Create ajax request for a given food
-  }
-
-  function clear() {
-    $foodsDiv.empty();
+  function addButton(topic) {
+    var $newButton = $('<button type="button">');
+    $newButton.val(topic);
+    $newButton.text(topic);
+    $topicButtonsDiv.append($newButton);
   }
 
 });
