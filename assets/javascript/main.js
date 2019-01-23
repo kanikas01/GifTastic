@@ -34,7 +34,7 @@ $(document).ready(function () {
 
   // ---------- Click handlers ---------- //
 
-  // Add user's new topic button to page
+  // Click to add user's new topic button to page
   $('#add-topic').on('click', function(event) {
     event.preventDefault();
     var newTopic = $("#topic-input").val();
@@ -42,7 +42,7 @@ $(document).ready(function () {
     $("#topic-input").val("");
   });
 
-  // Get gifs and add to page
+  // Click button to add gifs to page
   $topicButtonsDiv.on('click', 'button', function(event) {
     var queryTopic = $(this).val();
     var queryURL = giphyURL + queryTopic + "&" + apiKey + "&" + limit;
@@ -53,9 +53,10 @@ $(document).ready(function () {
       method: "GET"
     }).then(function (response) {
         response.data.forEach(function (element) {
+          console.log(element);
           // Get urls for static and animated images
-          var stillImageUrl = element.images.fixed_width_still.url;
-          var gifUrl = element.images.fixed_width.url;
+          var stillImageUrl = element.images.fixed_height_still.url;
+          var gifUrl = element.images.fixed_height.url;
           // Construct image tag
           var $newGif = $('<img class="gif">');
           $newGif.attr('src', stillImageUrl);
@@ -71,11 +72,9 @@ $(document).ready(function () {
       });
   });
 
-  // image - click to start or stop animation
+  // Click an image to start or stop animation
   $topicsDiv.on('click', '.gif', function () {
     var state = $(this).attr("data-state");
-    // If you click on still image it animates
-    // If you click on animated image, it stops
     if (state === "still") {
       $(this).attr("src", $(this).attr("data-animate"));
       $(this).attr("data-state", "animate");
