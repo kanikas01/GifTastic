@@ -4,7 +4,6 @@ $(document).ready(function () {
   // ---------- Global variables ---------- //
 
   var $topicButtonsDiv = $("#topic-buttons");
-  var $topicFormDiv = $("#topic-form");
   var $topicsDiv = $("#topics");
   var giphyURL = "http://api.giphy.com/v1/gifs/search?q=";
   var apiKey = "api_key=D39qfZFwvT1y8rgUTRAWeqRm5du5pQ2q";
@@ -45,7 +44,10 @@ $(document).ready(function () {
   // Click button to add gifs to page
   $topicButtonsDiv.on('click', 'button', function(event) {
     var queryTopic = $(this).val();
+    // Swap spaces for '+' chars
+    queryTopic = queryTopic.replace(/ /g, '+');
     var queryURL = giphyURL + queryTopic + "&" + apiKey + "&" + limit;
+    console.log(queryURL);
 
     // Ajax request
     $.ajax({
@@ -53,10 +55,10 @@ $(document).ready(function () {
       method: "GET"
     }).then(function (response) {
         response.data.forEach(function (element) {
-          console.log(element);
-          // Get urls for static and animated images
+          // Get image urls and rating
           var stillImageUrl = element.images.fixed_height_still.url;
           var gifUrl = element.images.fixed_height.url;
+          var rating = element.rating;
           // Construct image tag
           var $newGif = $('<img class="gif">');
           $newGif.attr('src', stillImageUrl);
@@ -64,10 +66,15 @@ $(document).ready(function () {
           $newGif.attr('data-animate', gifUrl);
           $newGif.attr('data-state', 'still');
 
-          // TODO - get rating and construct rating+image combo element
+          // Construct div containing image and rating
+          $newDiv = $("<div>");
+          $newH2 = $("<h2>");
+          $newH2.text(rating);
+          $newDiv.append($newGif);
+          $newDiv.append($newH2);
 
-          // Add new element to page
-          $topicsDiv.prepend($newGif);
+          // Add new div to page
+          $topicsDiv.prepend($newDiv);
         });
       });
   });
