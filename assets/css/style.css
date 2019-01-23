@@ -2,9 +2,11 @@ main {
   box-sizing: border-box;
 }
 
-#topic-form {
+#topic-form, #favorites {
   float: right;
+  width: 30%;
 }
+
 #topics {
   float: left;
   width: 70%;
