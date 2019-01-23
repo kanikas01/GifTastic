@@ -52,21 +52,22 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET"
     }).then(function (response) {
-        console.log(response);
+        response.data.forEach(function (element) {
+          // Get urls for static and animated images
+          var stillImageUrl = element.images.fixed_width_still.url;
+          var gifUrl = element.images.fixed_width.url;
+          // Construct image tag
+          var $newGif = $('<img class="gif">');
+          $newGif.attr('src', stillImageUrl);
+          $newGif.attr('data-still', stillImageUrl);
+          $newGif.attr('data-animate', gifUrl);
+          $newGif.attr('data-state', 'still');
 
+          // TODO - get rating and construct rating+image combo element
 
-        // // Saving the image_original_url property
-        // var imageUrl = response.data.image_original_url;
-
-        // // Creating and storing an image tag
-        // var catImage = $("<img>");
-
-        // // Setting the catImage src attribute to imageUrl
-        // catImage.attr("src", imageUrl);
-        // catImage.attr("alt", "cat image");
-
-        // // Prepending the catImage to the images div
-        // $("#images").prepend(catImage);
+          // Add new element to page
+          $topicsDiv.prepend($newGif);
+        });
       });
   });
 
