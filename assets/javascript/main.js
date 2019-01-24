@@ -105,10 +105,12 @@ $(document).ready(function () {
 
   // Add gif to favorites
   $topicsDiv.on('click', '.favorite', function() {
-    var oldText = $(this).text()
-    $(this).text("Remove from favorites");
     var favoriteGif = $(this).parent().clone();
-    $(this).text(oldText);
+    favoriteGif.find("button").text("Remove from favorites");
+    image = favoriteGif.find("img");
+    image.attr("src", image.attr("data-still"));
+    image.attr("data-state", "still");
+
     favoriteGif.appendTo($("#favorites"));
   });
 

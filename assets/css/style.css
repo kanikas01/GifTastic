@@ -17,6 +17,8 @@ h3 {
 #topics {
   float: left;
   width: 70%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 button {
