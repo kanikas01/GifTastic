@@ -60,7 +60,7 @@ $(document).ready(function () {
           // Get image urls and rating
           var stillImageUrl = element.images.fixed_height_still.url;
           var gifUrl = element.images.fixed_height.url;
-          var rating = element.rating;
+          var rating = element.rating.toUpperCase();
 
           // Construct image tag
           var $newGif = $('<img class="gif">');
