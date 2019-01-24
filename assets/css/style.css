@@ -34,3 +34,7 @@ button:focus {
 .giphy-element {
   margin: 1rem;
 }
+
+.favorite {
+  width: 100%;
+}
