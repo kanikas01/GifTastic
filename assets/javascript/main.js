@@ -37,9 +37,11 @@ $(document).ready(function () {
   $('#add-topic').on('click', function(event) {
     event.preventDefault();
     var newTopic = $("#topic-input").val();
-    topics.push(newTopic);
-    $topicButtonsDiv.empty();
-    topics.forEach(addButton);
+    if (newTopic && !topics.includes(newTopic)) {
+      topics.push(newTopic);
+      $topicButtonsDiv.empty();
+      topics.forEach(addButton);
+    }
     $("#topic-input").val("");
   });
 
