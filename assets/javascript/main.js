@@ -5,7 +5,7 @@ $(document).ready(function () {
 
   var $topicButtonsDiv = $("#topic-buttons");
   var $topicsDiv = $("#topics");
-  var giphyURL = "http://api.giphy.com/v1/gifs/search?q=";
+  var giphyURL = "https://api.giphy.com/v1/gifs/search?q=";
   var apiKey = "api_key=D39qfZFwvT1y8rgUTRAWeqRm5du5pQ2q";
   var limit = "limit=10";
 
