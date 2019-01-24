@@ -59,7 +59,7 @@ $(document).ready(function () {
       method: "GET"
     }).then(function (response) {
         response.data.forEach(function (element) {
-          console.log(element);
+          
           // Get image urls and rating
           var stillImageUrl = element.images.fixed_height_still.url;
           var gifUrl = element.images.fixed_height.url;
@@ -79,10 +79,9 @@ $(document).ready(function () {
           $favoriteButton.text(favoritesMessage);
 
           // Create download button
-          // var $downloadButton = $('<button type="button" class="download">');
-          var $downloadButton = $('<a href="data:' + element.images.original.url + '" target="_blank" download="giphy.gif">');
-          $downloadButton.html('<button type="submit">Download!</button>');
-          // $downloadButton.text("Download");
+          // var $downloadButton = $('<a href="data:' + gifUrl + '" target="_blank" download>');
+          // $downloadButton.html('<button type="submit">Download!</button>');
+          // console.log(gifUrl);
 
           // Construct div containing image, rating and button
           $newDiv = $('<div class="giphy-element">');
@@ -91,7 +90,7 @@ $(document).ready(function () {
           $newDiv.append($newGif);
           $newDiv.append($newH3);
           $newDiv.append($favoriteButton);
-          $newDiv.append($downloadButton);
+          // $newDiv.append($downloadButton);
 
           // Add new div to page
           $topicsDiv.prepend($newDiv);
