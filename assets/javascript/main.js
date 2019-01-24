@@ -61,6 +61,7 @@ $(document).ready(function () {
           var stillImageUrl = element.images.fixed_height_still.url;
           var gifUrl = element.images.fixed_height.url;
           var rating = element.rating;
+
           // Construct image tag
           var $newGif = $('<img class="gif">');
           $newGif.attr('src', stillImageUrl);
@@ -68,12 +69,19 @@ $(document).ready(function () {
           $newGif.attr('data-animate', gifUrl);
           $newGif.attr('data-state', 'still');
 
-          // Construct div containing image and rating
+          // Create 'favorite' button
+          var favoritesMessage = "Add to favorites";
+          var $newButton = $('<button type="button" class="favorite">');
+          $newButton.val(favoritesMessage);
+          $newButton.text(favoritesMessage);
+
+          // Construct div containing image, rating and button
           $newDiv = $('<div class="giphy-element">');
           $newH3 = $("<h3>");
           $newH3.text(rating);
           $newDiv.append($newGif);
           $newDiv.append($newH3);
+          $newDiv.append($newButton);
 
           // Add new div to page
           $topicsDiv.prepend($newDiv);
