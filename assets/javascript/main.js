@@ -80,7 +80,7 @@ $(document).ready(function () {
 
           // Create download button
           // var $downloadButton = $('<button type="button" class="download">');
-          var $downloadButton = $('<a href="' + element.images.original.url + '" target="_blank" download>');
+          var $downloadButton = $('<a href="data:' + element.images.original.url + '" target="_blank" download="giphy.gif">');
           $downloadButton.html('<button type="submit">Download!</button>');
           // $downloadButton.text("Download");
 
