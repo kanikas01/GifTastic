@@ -2,6 +2,10 @@ main {
   box-sizing: border-box;
 }
 
+h3 {
+  font-size: 1.25rem;
+}
+
 #topic-form, #favorites {
   float: right;
   width: 30%;
@@ -12,4 +16,16 @@ main {
   width: 70%;
   display: flex;
   flex-wrap: wrap;
+}
+
+button {
+  color: white;
+  background-color: midnightblue;
+  font-size: 1rem;
+  border-radius: 4px;
+  margin: 4px;
+}
+
+button:focus {
+  outline: none;
 }
