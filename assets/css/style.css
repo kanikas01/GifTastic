@@ -4,6 +4,7 @@ main {
 
 h3 {
   font-size: 1.25rem;
+  text-align: center;
 }
 
 #topic-form, #favorites {
@@ -28,4 +29,8 @@ button {
 
 button:focus {
   outline: none;
+}
+
+.giphy-element {
+  margin: 1rem;
 }
