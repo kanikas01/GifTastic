@@ -92,7 +92,7 @@ $(document).ready(function () {
   });
 
   // Click an image to start or stop animation
-  $topicsDiv.on('click', '.gif', function () {
+  $('main').on('click', '.gif', function () {
     var state = $(this).attr("data-state");
     if (state === "still") {
       $(this).attr("src", $(this).attr("data-animate"));
@@ -103,6 +103,19 @@ $(document).ready(function () {
     }
   });
 
+  // Add gif to favorites
+  $topicsDiv.on('click', '.favorite', function() {
+    var oldText = $(this).text()
+    $(this).text("Remove from favorites");
+    var favoriteGif = $(this).parent().clone();
+    $(this).text(oldText);
+    favoriteGif.appendTo($("#favorites"));
+  });
+
+  // Remove gif from favorites
+  $("#favorites").on('click', '.favorite', function () {
+    $(this).parent().remove();
+  });
 
   // ---------- Additional functions ---------- //
 
