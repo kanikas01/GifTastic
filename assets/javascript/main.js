@@ -59,6 +59,7 @@ $(document).ready(function () {
       method: "GET"
     }).then(function (response) {
         response.data.forEach(function (element) {
+          console.log(element);
           // Get image urls and rating
           var stillImageUrl = element.images.fixed_height_still.url;
           var gifUrl = element.images.fixed_height.url;
@@ -73,9 +74,15 @@ $(document).ready(function () {
 
           // Create 'favorite' button
           var favoritesMessage = "Add to favorites";
-          var $newButton = $('<button type="button" class="favorite">');
-          $newButton.val(favoritesMessage);
-          $newButton.text(favoritesMessage);
+          var $favoriteButton = $('<button type="button" class="favorite">');
+          $favoriteButton.val(favoritesMessage);
+          $favoriteButton.text(favoritesMessage);
+
+          // Create download button
+          // var $downloadButton = $('<button type="button" class="download">');
+          var $downloadButton = $('<a href="' + element.images.original.url + '" target="_blank" download>');
+          $downloadButton.html('<button type="submit">Download!</button>');
+          // $downloadButton.text("Download");
 
           // Construct div containing image, rating and button
           $newDiv = $('<div class="giphy-element">');
@@ -83,7 +90,8 @@ $(document).ready(function () {
           $newH3.text(rating);
           $newDiv.append($newGif);
           $newDiv.append($newH3);
-          $newDiv.append($newButton);
+          $newDiv.append($favoriteButton);
+          $newDiv.append($downloadButton);
 
           // Add new div to page
           $topicsDiv.prepend($newDiv);
@@ -108,8 +116,8 @@ $(document).ready(function () {
     // Make a copy of the element to be added to favorites
     var favoriteGif = $(this).parent().clone();
     // Change button text
-    favoriteGif.find("button").text("Remove from favorites");
-    image = favoriteGif.find("img");
+    favoriteGif.children("button").text("Remove from favorites");
+    image = favoriteGif.children("img");
     // Image in favorites section should initially be still
     if (image.attr("data-state") === "animate") {
       image.attr("src", image.attr("data-still"));
