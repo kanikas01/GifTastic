@@ -11,15 +11,25 @@ $(document).ready(function () {
 
   // Create array of topics
   var topics = [
+    "apples",
     "beans",
+    "biscuits",
     "burgers",
-    "catfish",
+    "cantelope",
     "cheese",
     "dumplings",
+    "eggs",
+    "french fries",
+    "grits",
+    "hash browns",
+    "juice",
+    "lemonade",
     "mushrooms",
+    "nori",
     "oranges",
     "oysters",
     "popcorn",
+    "radishes",
     "salad",
     "sausage",
     "shrimp",
@@ -84,7 +94,7 @@ $(document).ready(function () {
           // console.log(gifUrl);
 
           // Construct div containing image, rating and button
-          $newExternalDiv = $('<div class="card">');
+          $newExternalDiv = $('<div class="card ml-1 mr-1 mt-2">');
           $newInternalDiv = $('<div class="giphy-element card-body">');
           $newH3 = $("<h3>");
           $newH3.text(rating);
@@ -117,14 +127,14 @@ $(document).ready(function () {
     // Make a copy of the element to be added to favorites
     var favoriteGif = $(this).parent().parent().clone();
     // Change button text
-    favoriteGif.find(".favorite").text("Remove from favorites");
+    favoriteGif.find(".favorite").text("Remove");
     image = favoriteGif.find("img");
     // Image in favorites section should initially be still
     if (image.attr("data-state") === "animate") {
       image.attr("src", image.attr("data-still"));
       image.attr("data-state", "still");
     }
-    $("#favorites").prepend(favoriteGif);
+    favoriteGif.insertAfter($("h2"));
   });
 
   // Remove gif from favorites
@@ -136,7 +146,7 @@ $(document).ready(function () {
 
   // Add new button to page
   function addButton(topic) {
-    var $newButton = $('<button type="button" class="button">');
+    var $newButton = $('<button type="button" class="button m-1">');
     $newButton.val(topic);
     $newButton.text(topic);
     $topicButtonsDiv.append($newButton);
