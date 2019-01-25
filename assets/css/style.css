@@ -56,6 +56,12 @@ h3 {
   text-align: center;
 }
 
+hr {
+  border-bottom: 1px solid #6c757d;
+  width: 100%;
+  margin: 0;
+}
+
 .form {
   display: block;
 }
@@ -63,10 +69,22 @@ h3 {
 #topics, #favorites {
   display: flex;
   flex-wrap: wrap;
+  align-content: flex-start;
+  height: 100%;
+}
+
+#topics {
+  justify-content: center;
 }
 
 .favorite {
   margin: auto;
   width: 100%;
   padding: 0;
+}
+
+.jumbotron {
+  padding: 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }

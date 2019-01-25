@@ -14,28 +14,37 @@
 
 <body>
   <main>
-    <div class="row m-3">
-      <div id="topic-buttons" class="col-12"></div>
+    <div class="jumbotron jumbotron-fluid border-top border-bottom border-secondary">
+      <div class="container text-center">
+        <h1 class="display-4">Giphy - rarely what you expect</h1>
+        <p class="lead">In a perfect world, searching for food gifs would be simple and straightforward. This is not a perfect world.</p>
+      </div>
     </div>
 
-    <div class="row">
-      <div id="topics" class="col-8"></div>
+    <div class="row m-3">
+      <div id="topic-buttons" class="col-8"></div>
 
       <div class="col-4">
         <form id="topic-form">
           <div class="form-group">
-            <label for="topic-input">Add a food</label>
+            <label for="topic-input"><h3>Add a food</h3></label>
             <input id="topic-input" class="form-control" type="text">
           </div>
           <input id="add-topic" type="submit" value="Submit">
         </form>
-
-        <div id="favorites">
-          <h2>Favorites</h2>
-        </div>
-
+      
+        
+      
       </div>
     </div>
+
+    <hr>    
+
+    <div class="row">
+      <div id="topics" class="col-8 border-right border-secondary"></div>
+      <div id="favorites" class="col-4">
+        <h2>Favorites</h2>
+      </div>
 
   </main>
 
