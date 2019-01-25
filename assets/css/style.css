@@ -1,4 +1,4 @@
-main {
+/* main {
   box-sizing: border-box;
 }
 
@@ -44,4 +44,29 @@ button:focus {
   padding: 0;
   border-radius: 0;
   border: none;
+} */
+
+h2 {
+  width: 100%;
+  text-align: center;
+}
+
+h3 {
+  /* font-size: 1.25rem; */
+  text-align: center;
+}
+
+.form {
+  display: block;
+}
+
+#topics, #favorites {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.favorite {
+  margin: auto;
+  width: 100%;
+  padding: 0;
 }
