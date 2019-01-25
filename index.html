@@ -7,24 +7,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Add link to the jQuery Library -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" /> -->
   <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
 </head>
 
 <body>
   <main>
-    <div id="topic-buttons"></div>
+    <div class="row">
+      <div id="topic-buttons" class="col-12"></div>
+    </div>
 
-    <form id="topic-form">
-      <label for="topic-input">Add a food</label>
-      <input id="topic-input" type="text">
-      <input id="add-topic" type="submit" value="Submit">
-    </form>
+    <div class="row">
+      <div id="topics" class="col-8"></div>
 
-    <div id="topics"></div>
+      <div class="col-4">
+        <form id="topic-form">
+          <label for="topic-input">Add a food</label>
+          <input id="topic-input" type="text">
+          <input id="add-topic" type="submit" value="Submit">
+        </form>
 
-    <div id="favorites">
-      <h2>Favorites</h2>
+        <div id="favorites">
+          <h2>Favorites</h2>
+        </div>
+
+      </div>
     </div>
 
   </main>

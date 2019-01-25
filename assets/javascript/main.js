@@ -59,7 +59,7 @@ $(document).ready(function () {
       method: "GET"
     }).then(function (response) {
         response.data.forEach(function (element) {
-          
+          console.log(element);
           // Get image urls and rating
           var stillImageUrl = element.images.fixed_height_still.url;
           var gifUrl = element.images.fixed_height.url;
@@ -74,7 +74,7 @@ $(document).ready(function () {
 
           // Create 'favorite' button
           var favoritesMessage = "Add to favorites";
-          var $favoriteButton = $('<button type="button" class="favorite">');
+          var $favoriteButton = $('<button type="button" class="favorite button">');
           $favoriteButton.val(favoritesMessage);
           $favoriteButton.text(favoritesMessage);
 
@@ -84,16 +84,18 @@ $(document).ready(function () {
           // console.log(gifUrl);
 
           // Construct div containing image, rating and button
-          $newDiv = $('<div class="giphy-element">');
+          $newExternalDiv = $('<div class="card">');
+          $newInternalDiv = $('<div class="giphy-element card-body">');
           $newH3 = $("<h3>");
           $newH3.text(rating);
-          $newDiv.append($newGif);
-          $newDiv.append($newH3);
-          $newDiv.append($favoriteButton);
+          $newInternalDiv.append($newGif);
+          $newInternalDiv.append($newH3);
+          $newInternalDiv.append($favoriteButton);
+          $newExternalDiv.append($newInternalDiv);
           // $newDiv.append($downloadButton);
 
           // Add new div to page
-          $topicsDiv.prepend($newDiv);
+          $topicsDiv.prepend($newExternalDiv);
         });
       });
   });
@@ -113,10 +115,10 @@ $(document).ready(function () {
   // Add gif to favorites
   $topicsDiv.on('click', '.favorite', function() {
     // Make a copy of the element to be added to favorites
-    var favoriteGif = $(this).parent().clone();
+    var favoriteGif = $(this).parent().parent().clone();
     // Change button text
-    favoriteGif.children("button").text("Remove from favorites");
-    image = favoriteGif.children("img");
+    favoriteGif.find("button").text("Remove from favorites");
+    image = favoriteGif.find("img");
     // Image in favorites section should initially be still
     if (image.attr("data-state") === "animate") {
       image.attr("src", image.attr("data-still"));
@@ -134,7 +136,7 @@ $(document).ready(function () {
 
   // Add new button to page
   function addButton(topic) {
-    var $newButton = $('<button type="button">');
+    var $newButton = $('<button type="button" class="button">');
     $newButton.val(topic);
     $newButton.text(topic);
     $topicButtonsDiv.append($newButton);
