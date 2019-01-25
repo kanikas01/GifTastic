@@ -117,19 +117,19 @@ $(document).ready(function () {
     // Make a copy of the element to be added to favorites
     var favoriteGif = $(this).parent().parent().clone();
     // Change button text
-    favoriteGif.find("button").text("Remove from favorites");
+    favoriteGif.find(".favorite").text("Remove from favorites");
     image = favoriteGif.find("img");
     // Image in favorites section should initially be still
     if (image.attr("data-state") === "animate") {
       image.attr("src", image.attr("data-still"));
       image.attr("data-state", "still");
     }
-    favoriteGif.appendTo($("#favorites"));
+    $("#favorites").prepend(favoriteGif);
   });
 
   // Remove gif from favorites
   $("#favorites").on('click', '.favorite', function () {
-    $(this).parent().remove();
+    $(this).parent().parent().remove();
   });
 
   // ---------- Additional functions ---------- //
