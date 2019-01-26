@@ -8,6 +8,7 @@ $(document).ready(function () {
   var giphyURL = "https://api.giphy.com/v1/gifs/search?q=";
   var apiKey = "api_key=D39qfZFwvT1y8rgUTRAWeqRm5du5pQ2q";
   var limit = "limit=10";
+  var areGifsVisible = false;
 
   // Create array of topics
   var topics = [
@@ -105,7 +106,13 @@ $(document).ready(function () {
           // $newDiv.append($downloadButton);
 
           // Add new div to page
-          $topicsDiv.prepend($newExternalDiv);
+          $newExternalDiv.insertAfter($(".topics-h2"));
+
+          if (!areGifsVisible) {
+            $("#topics").css("display", "flex");
+            $("#favorites").css("display", "flex");
+            areGifsVisible = true;
+          }
         });
       });
   });
@@ -125,7 +132,7 @@ $(document).ready(function () {
   // Add gif to favorites
   $topicsDiv.on('click', '.favorite', function() {
     // Make a copy of the element to be added to favorites
-    var favoriteGif = $(this).parent().parent().clone();
+    var favoriteGif = $(this).parents(".card").clone();
     // Change button text
     favoriteGif.find(".favorite").text("Remove");
     image = favoriteGif.find("img");
@@ -134,12 +141,12 @@ $(document).ready(function () {
       image.attr("src", image.attr("data-still"));
       image.attr("data-state", "still");
     }
-    favoriteGif.insertAfter($("h2"));
+    favoriteGif.insertAfter($(".favorites-h2"));
   });
 
   // Remove gif from favorites
   $("#favorites").on('click', '.favorite', function () {
-    $(this).parent().parent().remove();
+    $(this).parents(".card").remove();
   });
 
   // ---------- Additional functions ---------- //
