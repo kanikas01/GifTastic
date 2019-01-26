@@ -49,6 +49,7 @@ button:focus {
 h2 {
   width: 100%;
   text-align: center;
+  margin-top: 1rem;
 }
 
 h3 {
@@ -67,14 +68,11 @@ hr {
 }
 
 #topics, #favorites {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   align-content: flex-start;
-  height: 100%;
-}
-
-#topics {
   justify-content: center;
+  height: 100%;
 }
 
 .favorite {
