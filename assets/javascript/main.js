@@ -62,7 +62,6 @@ $(document).ready(function () {
     // Swap spaces for '+' chars
     queryTopic = queryTopic.replace(/ /g, '+');
     var queryURL = giphyURL + queryTopic + "&" + apiKey + "&" + limit;
-    console.log(queryURL);
 
     // Ajax request
     $.ajax({
@@ -70,14 +69,14 @@ $(document).ready(function () {
       method: "GET"
     }).then(function (response) {
         response.data.forEach(function (element) {
-          console.log(element);
+          // console.log(element);  // useful for development
           // Get image urls and rating
           var stillImageUrl = element.images.fixed_height_still.url;
           var gifUrl = element.images.fixed_height.url;
           var rating = element.rating.toUpperCase();
 
           // Construct image tag
-          var $newGif = $('<img class="gif">');
+          var $newGif = $('<img class="gif img-fluid">');
           $newGif.attr('src', stillImageUrl);
           $newGif.attr('data-still', stillImageUrl);
           $newGif.attr('data-animate', gifUrl);
@@ -85,25 +84,25 @@ $(document).ready(function () {
 
           // Create 'favorite' button
           var favoritesMessage = "Add to favorites";
-          var $favoriteButton = $('<button type="button" class="favorite button">');
+          var $favoriteButton = $('<button type="button" class="favorite btn btn-dark">');
           $favoriteButton.val(favoritesMessage);
           $favoriteButton.text(favoritesMessage);
 
           // Create download button
           // var $downloadButton = $('<a href="data:' + gifUrl + '" target="_blank" download>');
-          // $downloadButton.html('<button type="submit">Download!</button>');
+          // $downloadButton.html('<button type="submit" class="btn btn-dark">Download</button>');
           // console.log(gifUrl);
 
           // Construct div containing image, rating and button
           $newExternalDiv = $('<div class="card ml-1 mr-1 mt-2">');
           $newInternalDiv = $('<div class="giphy-element card-body">');
           $newH3 = $("<h3>");
-          $newH3.text(rating);
+          $newH3.text("Rating: " + rating);
           $newInternalDiv.append($newGif);
           $newInternalDiv.append($newH3);
           $newInternalDiv.append($favoriteButton);
           $newExternalDiv.append($newInternalDiv);
-          // $newDiv.append($downloadButton);
+          // $newExternalDiv.append($downloadButton);
 
           // Add new div to page
           $newExternalDiv.insertAfter($(".topics-h2"));
@@ -153,7 +152,7 @@ $(document).ready(function () {
 
   // Add new button to page
   function addButton(topic) {
-    var $newButton = $('<button type="button" class="button m-1">');
+    var $newButton = $('<button type="button" class="btn btn-light m-1">');
     $newButton.val(topic);
     $newButton.text(topic);
     $topicButtonsDiv.append($newButton);
