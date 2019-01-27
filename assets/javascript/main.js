@@ -90,7 +90,7 @@ $(document).ready(function () {
 
           // Create download button
           // var $downloadButton = $('<a href="data:' + gifUrl + '" target="_blank" download>');
-          // $downloadButton.html('<button type="submit" class="btn btn-dark">Download</button>');
+          // $downloadButton.html('<button type="button" class="btn btn-dark">Download</button>');
           // console.log(gifUrl);
 
           // Construct div containing image, rating and button
@@ -101,8 +101,9 @@ $(document).ready(function () {
           $newInternalDiv.append($newGif);
           $newInternalDiv.append($newH3);
           $newInternalDiv.append($favoriteButton);
+          // $newInternalDiv.append($downloadButton);
           $newExternalDiv.append($newInternalDiv);
-          // $newExternalDiv.append($downloadButton);
+          
 
           // Add new div to page
           $newExternalDiv.insertAfter($(".topics-h2"));
