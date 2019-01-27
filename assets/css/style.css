@@ -1,66 +1,20 @@
-/* main {
-  box-sizing: border-box;
+body {
+  background-image: url("../images/fruit-background.jpg");
+  background-position: top;
+  background-size: cover;
+  background-attachment: fixed;
 }
-
-h3 {
-  font-size: 1.25rem;
-  text-align: center;
-}
-
-#topic-form, #favorites {
-  float: right;
-  width: 30%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-#topics {
-  float: left;
-  width: 70%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-button {
-  color: white;
-  background-color: midnightblue;
-  font-size: 1rem;
-  border-radius: 4px;
-  margin: 4px;
-}
-
-button:focus {
-  outline: none;
-}
-
-.giphy-element {
-  margin: 1rem;
-  border: 1px solid black;
-}
-
-.favorite {
-  margin: auto;
-  width: 100%;
-  padding: 0;
-  border-radius: 0;
-  border: none;
-} */
 
 h2 {
   width: 100%;
   text-align: center;
-  margin-top: 1rem;
+  text-shadow: 2px 2px aliceblue;
+  margin-top: 0.5rem;
+  font-size: 3rem;
 }
 
 h3 {
-  /* font-size: 1.25rem; */
   text-align: center;
-}
-
-hr {
-  border-bottom: 1px solid #6c757d;
-  width: 100%;
-  margin: 0;
 }
 
 .form {
@@ -86,3 +40,7 @@ hr {
   padding-top: 2rem;
   padding-bottom: 2rem;
 }
+/* 
+div {
+  border: 1px solid red;
+} */
