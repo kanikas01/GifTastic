@@ -22,8 +22,6 @@ $(document).ready(function () {
     "hash browns",
     "iceburg lettuce",
     "juice",
-    "kale",
-    "lemonade",
     "mushrooms",
     "nigiri",
     "oranges",
