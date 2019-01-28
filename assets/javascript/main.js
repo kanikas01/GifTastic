@@ -48,11 +48,13 @@ $(document).ready(function () {
   $('#add-topic').on('click', function(event) {
     event.preventDefault();
     var newTopic = $("#topic-input").val();
+    // Make sure user's topic isn't a blank string or a duplicate
     if (newTopic && !topics.includes(newTopic)) {
       topics.push(newTopic);
       $topicButtonsDiv.empty();
       topics.forEach(addButton);
     }
+    // Clear input field
     $("#topic-input").val("");
   });
 
@@ -104,10 +106,11 @@ $(document).ready(function () {
           // $newInternalDiv.append($downloadButton);
           $newExternalDiv.append($newInternalDiv);
           
-
           // Add new div to page
           $newExternalDiv.insertAfter($(".topics-h2"));
 
+          // Only display the #topics and #favorites sections
+          // after the user has clicked a topic button
           if (!areGifsVisible) {
             $("#topics").css("display", "flex");
             $("#favorites").css("display", "flex");
@@ -133,14 +136,17 @@ $(document).ready(function () {
   $topicsDiv.on('click', '.favorite', function() {
     // Make a copy of the element to be added to favorites
     var favoriteGif = $(this).parents(".card").clone();
+
     // Change button text
     favoriteGif.find(".favorite").text("Remove");
-    image = favoriteGif.find("img");
+    
     // Image in favorites section should initially be still
+    image = favoriteGif.find("img");
     if (image.attr("data-state") === "animate") {
       image.attr("src", image.attr("data-still"));
       image.attr("data-state", "still");
     }
+    // Add to favorites div
     favoriteGif.insertAfter($(".favorites-h2"));
   });
 
@@ -148,6 +154,7 @@ $(document).ready(function () {
   $("#favorites").on('click', '.favorite', function () {
     $(this).parents(".card").remove();
   });
+  
 
   // ---------- Additional functions ---------- //
 
