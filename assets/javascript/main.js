@@ -13,29 +13,31 @@ $(document).ready(function () {
   // Create array of topics
   var topics = [
     "apples",
-    "beans",
-    "biscuits",
     "burgers",
-    "cantelope",
     "cheese",
+    "chocolate",
     "dumplings",
     "eggs",
     "french fries",
-    "grits",
     "hash browns",
+    "iceburg lettuce",
     "juice",
+    "kale",
     "lemonade",
     "mushrooms",
-    "nori",
+    "nigiri",
     "oranges",
-    "oysters",
     "popcorn",
     "radishes",
-    "salad",
-    "sausage",
+    "samosas",
     "shrimp",
     "tacos",
-    "tofu"
+    "tofu", 
+    "udon",
+    "vermicelli",
+    "watermelon",
+    "yogurt",
+    "zucchini"
   ];
 
   // Add a button to the page for each topic
